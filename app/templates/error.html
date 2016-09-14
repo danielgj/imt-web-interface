@@ -1,0 +1,22 @@
+    <div class="page-content page-error text-center withoutBanner">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3">
+						<h1>{{errorValue.status}}</h1>
+						<h2>OOPS! Se ha producido un error</h2>
+						<hr />
+						<div class="error-description">
+							<p>{{errorValue.data.msg}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<script>
+        $(document).ready(function() {
+            $('#bannerHome').hide();
+            $('#bannerContact').hide();
+            $('#bannerApps').hide();
+        });
+</script>

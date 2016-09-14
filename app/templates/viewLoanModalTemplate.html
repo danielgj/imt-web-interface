@@ -1,0 +1,82 @@
+    <div>
+        <div class="modal-header">
+            <h4 class="modal-title">Loan Information</h4>
+        </div>
+        <div class="modal-body">
+            
+              <div class="row">
+                <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                    <div class="alert alert-danger" role="alert" ng-show="withError">{{errorMsg}}</div>
+                </div>
+              </div>
+            
+              <div class="row">
+                  <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                      <div class="form-group">
+                        <label class="control-label col-lg-5 col-md-5">  
+                            Device
+                        </label>
+                        <div class="col-lg-5 col-md-5">
+                          {{loanData.device}}
+                        </div>
+                      </div>
+                  </div>
+              </div>
+            
+              <div class="row">
+                  <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                      <div class="form-group">
+                        <label class="control-label col-lg-5 col-md-5">  
+                            Loaned to
+                        </label>
+                        <div class="col-lg-5 col-md-5">
+                          {{loanData.requestor}}
+                        </div>
+                      </div>
+                  </div>
+              </div>
+            
+              <div class="row">
+                  <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                      <div class="form-group">
+                        <label class="control-label col-lg-5 col-md-5">  
+                            Loan's state
+                        </label>
+                        <div class="col-lg-5 col-md-5">
+                          {{loanData.status}}
+                        </div>
+                      </div>
+                  </div>
+              </div>
+            
+              <div class="row">
+                  <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                      <div class="form-group">
+                        <label class="control-label col-lg-5 col-md-5">  
+                            Request date
+                        </label>
+                        <div class="col-lg-5 col-md-5">
+                          {{loanData.date}}
+                        </div>
+                      </div>
+                  </div>
+              </div>
+            
+            <div class="row">
+                  <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                      <div class="form-group">
+                        <label class="control-label col-lg-5 col-md-5">   
+                            Notes
+                        </label>
+                        <div class="col-lg-5 col-md-5">
+                          {{loanData.comments}}
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          
+        </div><!-- End of Modal body -->
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="cancel()">Close</button>
+        </div>
+    </div>

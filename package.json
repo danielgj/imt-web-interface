@@ -1,0 +1,16 @@
+{
+  "name": "webIMT",
+  "version": "1.0.0",
+  "description": "Web Interface for Inventory Management Tool (Coursera MEAN Stack Certification Capstone Project)",
+  "author": "Daniel García Jones <danielgj@gmail.com>",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/danielgj/imt-web-interface"
+  },
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "connect" : "3.4.1",
+    "serve-static": "1.10.2"
+  }
+}

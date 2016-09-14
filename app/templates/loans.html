@@ -1,0 +1,81 @@
+<br/>
+<section>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-md-8">
+        <h2 class="section-heading">Your requests</h2>
+      </div>
+    </div>
+        
+    <div class="row">
+      <div class="col-md-12">
+        <p class="lead"></p>
+      </div>
+    </div>  
+    
+    <div class="row">
+        <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+            <div class="alert alert-warning" role="alert" ng-show="loading"><img src="./img/ajax-loader.gif" alt="Reading requests"/> Reading requests...</div>
+        </div>
+    </div>
+      
+    <div class="row">
+      <div class="col-md-12">
+          <div class="alert alert-warning" role="alert" ng-show="working"><img src="./img/ajax-loader.gif" alt="Updating requests"/> Updating requests...</div>
+      </div>
+    </div>
+      
+    <div class="row">
+        <!-- Filtros -->
+        <div class="col-sm-12 col-md-4"> 
+                <div class="form-group">
+                    <label class="control-label col-md-4" for="availability">
+                            State
+                    </label>
+                    <div class="col-md-8">
+                      <select class="form-control input-sm" ng-options="item as item._id for item in states   track by item._id" ng-model="state" ng-change="filter()"></select>
+                    </div>
+                </div>
+        </div>          
+    </div>
+    <br/>
+      
+    <div class="row" ng-show="requests.length===0">
+      <div class="col-md-12">                    
+        <p>
+              You don't have any request at all or not any request matching the current filter.
+        </p>
+      </div>
+    </div>
+      
+      
+      
+    <div class="row" ng-show="requests.length>0">
+      <div class="col-md-12">
+        
+            <table class="table table-striped">
+              <tr class="info">
+                <th>DEVICE</th>
+                <th>DATE</th>
+                <th>NOTES</th>
+                <th>STATUS</th>
+                <th>ACTIONS</th>
+              </tr>
+              <tr ng-repeat="item in requests | filterLoans: state">
+                  <td>{{item.item.name}}</td>
+                  <td>{{item.requestDate}}</td>
+                  <td>{{item.comments}}</td>
+                  <td>{{item.state}}</td>
+                  <td>   
+                      <button class="btn btn-primary btn-sm" ng-show="item.state=='Ongoing'" ng-disabled="requesting" ng-click="requestDev(item)"><span class="glyphicon glyphicon-export" aria-hidden="true"></button>
+                  </td>
+              </tr>
+            </table>
+        
+      </div>
+    </div>
+        
+        
+  </div>
+</section>

@@ -1,0 +1,121 @@
+<form name="formAddDevice"  class="form-horizontal" validate>
+    <div>
+        <div class="modal-header">
+            <h4 class="modal-title">Add device</h4>
+        </div>
+        <div class="modal-body">
+
+          <div class="row">
+            <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                <div class="alert alert-danger" role="alert" ng-show="withError">{{errorMsg}}</div>
+            </div>
+          </div>
+
+
+          <div class="row">
+              <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                  <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4" for="category">
+                            <span class="text-danger btnRequired" title="Mandatory field">*</span>
+                            Category
+                    </label>
+                    <div class="col-lg-6 col-md-6">
+                      <select  class="form-control" ng-options="item as item.category for item in categories  track by item._id" ng-model="device.category" required></select>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                  <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4" for="brand">
+                            <span class="text-danger btnRequired" title="Mandatory field">*</span>
+                            Brand
+                    </label>
+                    <div class="col-lg-6 col-md-6">
+                        <select class="form-control" id="brandS" name="brandS" ng-options="item as item.brand for item in brands track by item._id" ng-model="device.brand" required></select>                        
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                  <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4" for="name">
+                            <span class="text-danger btnRequired" title="Mandatory field">*</span>
+                            Device Name
+                    </label>
+                    <div class="col-lg-6 col-md-6">
+                        <input type="text" class="form-control" id="nombre" name="nombre" ng-model="device.name" required/>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                  <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4" for="model">
+                            <span class="text-danger btnRequired" title="Mandatory field">*</span>
+                            Model
+                    </label>
+                    <div class="col-lg-6 col-md-6">
+                        <input type="text" class="form-control" id="model" name="model" ng-model="device.model" required/>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                  <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4" for="os">
+                            Operating System
+                    </label>
+                    <div class="col-lg-6 col-md-6">
+                        <input type="text" class="form-control" id="os" name="os" ng-model="device.os" />
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                  <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4" for="serial">
+                            Serial Number
+                    </label>
+                    <div class="col-lg-6 col-md-6">
+                        <input type="text" class="form-control" id="serial" name="serial" ng-model="device.serial" />
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                  <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4" for="owner">
+                            Owner
+                    </label>
+                    <div class="col-lg-6 col-md-6">
+                        <input type="text" class="form-control" id="owner" name="owner" ng-model="device.owner" />
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                  <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4" for="notes">
+                            Aditional Info
+                    </label>
+                    <div class="col-lg-6 col-md-6">
+                        <textarea class="form-control" id="notes" name="notes" ng-model="device.notes"></textarea>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div><!-- End of Modal body -->
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="add()">Add</button>
+            <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+        </div>
+</div>
+</form>

@@ -1,0 +1,38 @@
+        <!-- INTRO -->
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<h2 class="section-heading">WELLCOME</h2>
+						<p class="lead">Access the company devices and equipment inventory.</p>
+						<p>You can check the whole inventory and manage your loan requests needed for your current development projects. </p>
+						<div ng-show="!user">
+                            <p>Enter IMT to request a new loan or to return an item.</p>
+                            <p>
+                                <a class="btn btn-primary btn-large"  ng-click="openLogin()">Login</a>
+                                <a class="btn btn-primary btn-large" ng-click="openRegister()">Register</a>
+                            </p>
+                        </div>
+					</div>
+					<div class="col-md-6">
+						<img src="img/mobile-apps.jpg" class="img-responsive" alt="Mobile Devices">
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- END INTRO -->
+
+
+
+
+<script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">User Login</h3>
+        </div>
+        <div class="modal-body">
+            Login or Register
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        </div>
+</script>

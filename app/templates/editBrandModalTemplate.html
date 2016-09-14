@@ -1,0 +1,40 @@
+<form name="formEditBrand"  class="form-horizontal" validate>
+    <div>
+        <div class="modal-header">
+            <h4 class="modal-title">Edit Brand</h4>
+        </div>
+        <div class="modal-body">
+
+          <div class="row">
+            <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                <div class="alert alert-warning" role="alert" ng-show="requesting"><img src="./img/ajax-loader.gif" alt="Saving brand"/> Saving brand...</div>
+            </div>
+          </div>
+            
+          <div class="row">
+            <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                <div class="alert alert-danger" role="alert" ng-show="withError">{{errorMsg}}</div>
+            </div>
+          </div>
+
+
+          <div class="row">
+              <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                  <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4" for="brand">
+                            <span class="text-danger btnRequired" title="Campo obligatorio">*</span>
+                            Brand
+                    </label>
+                    <div class="col-lg-6 col-md-6">
+                      <input type="text" name="brand" class="form-control" ng-model="brandToEdit.brand"  />
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div><!-- End of Modal body -->
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-disabled="requesting" ng-click="edit()">Save</button>
+            <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+        </div>
+</div>
+</form>

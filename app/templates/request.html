@@ -1,0 +1,58 @@
+<br/>
+<section>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-md-8">
+        <h2 class="section-heading">Pending requests</h2>
+      </div>
+    </div>
+      
+      
+    <div class="row">
+      <div class="col-md-12">
+          <div class="alert alert-warning" role="alert" ng-show="working"><img src="./img/ajax-loader.gif" alt="Updating request"/> Updating request...</div>
+      </div>
+    </div>      
+      
+    <div class="row" ng-show="pending_loans.length===0">
+      <div class="col-md-12">                    
+        <p>
+              There are no pending requests or not requests matching the filters.
+        </p>
+      </div>
+    </div>
+      
+      
+      
+    <div class="row" ng-show="pending_loans.length>0">
+      <div class="col-md-12">
+        
+            <table class="table table-striped">
+              <tr class="info">
+                <th>DEVICE</th>
+                <th>REQUESTOR</th>
+                <th>DATE</th>
+                <th>NOTES</th>
+                <th>STATUS</th>
+                <th>ACTIONS</th>
+              </tr>
+              <tr ng-repeat="item in pending_loans">
+                  <td>{{item.item.name}}</td>
+                  <td>{{item.user.firstname + ' ' + item.user.lastname}}</td>
+                  <td>{{item.requestDate}}</td>
+                  <td>{{item.comments}}</td>
+                  <td>{{item.state}}</td>
+                  <td>
+                    <button class="btn btn-success btn-sm" ng-click="approve(item)" ng-disabled="working"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
+                    <button class="btn btn-danger btn-sm" ng-show="item.state!='PdteCierre'" ng-click="reject(item)" ng-disabled="working"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
+                  </td>
+              </tr>
+            </table>
+        
+      </div>
+    </div>
+        
+        
+  </div>
+</section>

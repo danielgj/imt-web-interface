@@ -1,0 +1,53 @@
+<form name="formAddDevice"  class="form-horizontal" validate>
+    <div>
+        <div class="modal-header">
+            <h4 class="modal-title">Request Loan</h4>
+        </div>
+        <div class="modal-body">
+
+          <div class="row">
+            <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                <div class="alert alert-warning" role="alert" ng-show="requesting"><img src="./img/ajax-loader.gif" alt="Solicitando préstamo"/> Requesting loan...</div>
+            </div>
+          </div>
+            
+          <div class="row">
+            <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                <div class="alert alert-danger" role="alert" ng-show="withError">{{errorMsg}}</div>
+            </div>
+          </div>
+
+
+          <div class="row">
+              <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                  <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4" for="devicename">
+                            <span class="text-danger btnRequired" title="Campo obligatorio">*</span>
+                            Device
+                    </label>
+                    <div class="col-lg-6 col-md-6">
+                      <input type="hidden" name="idDispositivo" id="idDispositivo" ng-model="loan.deviceId"/>
+                      <input type="text" name="devicename" class="form-control" ng-model="loan.deviceName" readonly />
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
+                  <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4" for="notes">
+                            Notes
+                    </label>
+                    <div class="col-lg-6 col-md-6">
+                        <textarea class="form-control" id="notes" name="notes" ng-model="loan.notes"></textarea>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div><!-- End of Modal body -->
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-disabled="requesting" ng-click="add()">Request</button>
+            <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+        </div>
+</div>
+</form>
