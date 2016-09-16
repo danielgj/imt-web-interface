@@ -1,7 +1,5 @@
 var imtApp = angular.module("imtApp", ["ngRoute","ui.bootstrap"]);
 
-var url_base_api = "put_url_to_your_api_here";
-
 //Route providers
 imtApp.config(['$routeProvider',
   function($routeProvider) {

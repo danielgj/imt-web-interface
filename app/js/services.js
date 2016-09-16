@@ -1,4 +1,11 @@
 imtApp
+
+.service('configService',function() {
+        var config = {};
+    
+        config.url_base_api = 'your_api_url_here';        
+        return config;
+})
     
 .service('MenuService', function($http,$rootScope, Utils) {
 
@@ -57,12 +64,6 @@ imtApp
 
   }})
 
-.service('configService',function() {
-        var config = {};
-    
-        config.url_api = 'http://localhost:3000/';        
-        return config;
-})
 
 .service('dataService', ['$rootScope', '$http', 'configService', function($rootScope, $http, configService){
         

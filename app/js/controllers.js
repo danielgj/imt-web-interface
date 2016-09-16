@@ -12,9 +12,6 @@ imtApp
             );
         }
     })
-    .controller('ErrorController', function($rootScope) {
-
-    })
     .controller("HomeController", function($scope, $http, $rootScope, $sce, $modal, $location, $route, MenuService, Utils) {
         $scope.openLogin = function () {
             var modalInstance = $modal.open(
@@ -239,7 +236,7 @@ imtApp
         }
 
     })
-    .controller("RequestsController", function($scope, $http, $rootScope, $sce, $modal, $location, $route, MenuService, dataService, Utils) {
+    .controller("RequestsController", function($scope, $http, $rootScope, $sce, $modal, $location, $route, MenuService, dataService, configService, Utils) {
     
         $scope.loading = true;
         $scope.types = [{'_id': 'Loan'}, {'_id': 'Return'}];         
@@ -263,7 +260,7 @@ imtApp
             $scope.working=true;
             $http({
                   method: 'PUT',
-                  url: url_base_api + 'loans/' + item._id,
+                  url: configService.url_base_api + 'loans/' + item._id,
                   headers: {
                      "Accept": "application/json;charset=utf-8",
                      "Authorization" : "Bearer " + $rootScope.token
@@ -296,7 +293,7 @@ imtApp
             $scope.working=true;
             $http({
                   method: 'PUT',
-                  url: url_base_api + 'loans/' + item._id,
+                  url: configService.url_base_api + 'loans/' + item._id,
                   headers: {
                      "Accept": "application/json;charset=utf-8",
                      "Authorization" : "Bearer " + $rootScope.token
@@ -517,7 +514,7 @@ imtApp
     })
     
     //Action Modal Controllers
-    .controller("RegisterModalCtrl", function($scope, $rootScope, $modalInstance, $http, $sce, $location, MenuService, Utils) {
+    .controller("RegisterModalCtrl", function($scope, $rootScope, $modalInstance, $http, $sce, $location, MenuService, configService, Utils) {
 
         $rootScope.withError = false;
 
@@ -537,7 +534,7 @@ imtApp
                     $rootScope.registering = true;
                     $http({
                         method: 'POST',
-                        url: url_base_api + 'users/register/',
+                        url: configService.url_base_api + 'users/register/',
                         headers: {
                            "Accept": "application/json;charset=utf-8"
                        },
@@ -559,7 +556,7 @@ imtApp
                             
                             $http({
                                 method: 'POST',
-                                url: url_base_api + 'users/login/',
+                                url: configService.url_base_api + 'users/login/',
                                 headers: {
                                    "Accept": "application/json;charset=utf-8"
                                },
@@ -627,7 +624,7 @@ imtApp
             $modalInstance.dismiss('cancel');
         };
     })
-    .controller("LoginModalCtrl", function($scope, $rootScope, $modalInstance, $http, $sce, $location, $route, MenuService, Utils) {
+    .controller("LoginModalCtrl", function($scope, $rootScope, $modalInstance, $http, $sce, $location, $route, MenuService, configService, Utils) {
 
         if(Utils.isUndefinedOrNull($rootScope.withError)) {
             $rootScope.withError = false;
@@ -638,7 +635,7 @@ imtApp
             if(!(Utils.isUndefinedOrNull($scope.user) || Utils.isUndefinedOrNull($scope.user.pass))) {
                 $http({
                     method: 'POST',
-                    url: url_base_api + 'users/login/',
+                    url: configService.url_base_api + 'users/login/',
                     headers: {
                        "Accept": "application/json;charset=utf-8"
                    },
@@ -715,7 +712,7 @@ imtApp
         };
 
     })
-    .controller("EditUserModalCtrl", function($scope, $rootScope, $modalInstance, $http, $sce, $route, $location, MenuService, Utils) {
+    .controller("EditUserModalCtrl", function($scope, $rootScope, $modalInstance, $http, $sce, $route, $location, MenuService, configService, Utils) {
 
         $rootScope.withError = false;
 
@@ -729,7 +726,7 @@ imtApp
                     $rootScope.registering = true;
                     $http({
                         method: 'PUT',
-                        url: url_base_api + 'users/' + $rootScope.userToEdit._id,
+                        url: configService.url_base_api + 'users/' + $rootScope.userToEdit._id,
                         headers: {
                            "Accept": "application/json;charset=utf-8",
                             "Authorization" : "Bearer " + $rootScope.token
@@ -785,7 +782,7 @@ imtApp
         };
     
     })
-    .controller("AddLoanModalCtrl", function($scope, $http, $rootScope, $modalInstance, $sce, $modal, $location, $route, MenuService, Utils) {
+    .controller("AddLoanModalCtrl", function($scope, $http, $rootScope, $modalInstance, $sce, $modal, $location, $route, MenuService, configService, Utils) {
               
         $scope.loan = {
                       "deviceId" : $rootScope.currentLoanRequestItem._id,
@@ -808,7 +805,7 @@ imtApp
             
             $http({
                   method: 'POST',
-                  url: url_base_api + 'loans/',
+                  url: configService.url_base_api + 'loans/',
                   headers: {
                      "Accept": "application/json;charset=utf-8",
                      "Authorization" : "Bearer " + $rootScope.token
@@ -846,7 +843,7 @@ imtApp
         };
     
     })
-    .controller("RequestLoanReturnModalCtrl", function($http, $scope, $route, $rootScope, $modalInstance, $location, MenuService) {
+    .controller("RequestLoanReturnModalCtrl", function($http, $scope, $route, $rootScope, $modalInstance, $location, configService, MenuService) {
 
         $scope.request = function() {
             var itemParsed = $rootScope.itemToReturn;
@@ -856,7 +853,7 @@ imtApp
             $scope.working=true;
             $http({
                   method: 'PUT',
-                  url: url_base_api + 'loans/' + itemParsed._id,
+                  url: configService.url_base_api + 'loans/' + itemParsed._id,
                   headers: {
                      "Accept": "application/json;charset=utf-8",
                      "Authorization" : "Bearer " + $rootScope.token
@@ -883,7 +880,7 @@ imtApp
         };
 
     })
-    .controller("AddDeviceModalCtrl", function($scope, $http, $rootScope, $modalInstance, $sce, $modal, $location, $route, MenuService, Utils) {
+    .controller("AddDeviceModalCtrl", function($scope, $http, $rootScope, $modalInstance, $sce, $modal, $location, $route, MenuService, configService, Utils) {
       $rootScope.withError = false;
 
       $scope.add = function() {
@@ -921,7 +918,7 @@ imtApp
 
               $http({
                   method: 'POST',
-                  url: url_base_api + 'items/',
+                  url: configService.url_base_api + 'items/',
                   headers: {
                      "Accept": "application/json;charset=utf-8",
                      "Authorization" : "Bearer " + $rootScope.token
@@ -956,7 +953,7 @@ imtApp
       };
 
     })
-    .controller("AddCategoryModalCtrl", function($scope, $http, $rootScope, $sce, $modal, $modalInstance, $location, $route, MenuService, dataService, Utils) {
+    .controller("AddCategoryModalCtrl", function($scope, $http, $rootScope, $sce, $modal, $modalInstance, $location, $route, MenuService,  configService, dataService, Utils) {
 
         $rootScope.withError = false;
 
@@ -970,7 +967,7 @@ imtApp
                 
                 $http({
                   method: 'POST',
-                  url: url_base_api + 'categories/',
+                  url: configService.url_base_api + 'categories/',
                   headers: {
                      "Accept": "application/json;charset=utf-8",
                      "Authorization" : "Bearer " + $rootScope.token
@@ -1004,7 +1001,7 @@ imtApp
         };
     
     })
-    .controller("EditCategoryModalCtrl", function($scope, $http, $rootScope, $sce, $modal, $modalInstance, $location, $route, MenuService, dataService, Utils) {
+    .controller("EditCategoryModalCtrl", function($scope, $http, $rootScope, $sce, $modal, $modalInstance, $location, $route, MenuService, configService, dataService, Utils) {
 
         $rootScope.withError = false;
 
@@ -1018,7 +1015,7 @@ imtApp
                 
                 $http({
                   method: 'PUT',
-                  url: url_base_api + 'categories/' + $rootScope.categoryToEdit._id,
+                  url: configService.url_base_api + 'categories/' + $rootScope.categoryToEdit._id,
                   headers: {
                      "Accept": "application/json;charset=utf-8",
                      "Authorization" : "Bearer " + $rootScope.token
@@ -1053,7 +1050,7 @@ imtApp
         };
     
     })
-    .controller("AddBrandModalCtrl", function($scope, $http, $rootScope, $sce, $modal, $modalInstance, $location, $route, MenuService, dataService, Utils) {
+    .controller("AddBrandModalCtrl", function($scope, $http, $rootScope, $sce, $modal, $modalInstance, $location, $route, MenuService, configService, dataService, Utils) {
     
         $rootScope.withError = false;
 
@@ -1067,7 +1064,7 @@ imtApp
                 
                 $http({
                   method: 'POST',
-                  url: url_base_api + 'brands/',
+                  url: configService.url_base_api + 'brands/',
                   headers: {
                      "Accept": "application/json;charset=utf-8",
                      "Authorization" : "Bearer " + $rootScope.token
@@ -1101,14 +1098,14 @@ imtApp
         };
     
     })
-    .controller("DeleteCategoryModalCtrl", function($scope, $http, $rootScope, $sce, $modal, $modalInstance, $location, $route, MenuService, dataService, Utils) { 
+    .controller("DeleteCategoryModalCtrl", function($scope, $http, $rootScope, $sce, $modal, $modalInstance, $location, $route, MenuService, configService, dataService, Utils) { 
     
         $rootScope.withError = false;
 
         $scope.delete = function() {
             $http({
                   method: 'DELETE',
-                  url: url_base_api + 'categories/' + $rootScope.categoryToDelete._id,
+                  url: configService.url_base_api + 'categories/' + $rootScope.categoryToDelete._id,
                   headers: {
                      "Accept": "application/json;charset=utf-8",
                      "Authorization" : "Bearer " + $rootScope.token
@@ -1137,7 +1134,7 @@ imtApp
           $modalInstance.dismiss('cancel');
         };
     })
-    .controller("EditBrandModalCtrl", function($scope, $http, $rootScope, $sce, $modal, $modalInstance, $location, $route, MenuService, dataService, Utils) {
+    .controller("EditBrandModalCtrl", function($scope, $http, $rootScope, $sce, $modal, $modalInstance, $location, $route, MenuService, configService, dataService, Utils) {
 
         $rootScope.withError = false;
 
@@ -1151,7 +1148,7 @@ imtApp
                 
                 $http({
                   method: 'PUT',
-                  url: url_base_api + 'brands/' + $rootScope.brandToEdit._id,
+                  url: configService.url_base_api + 'brands/' + $rootScope.brandToEdit._id,
                   headers: {
                      "Accept": "application/json;charset=utf-8",
                      "Authorization" : "Bearer " + $rootScope.token
@@ -1186,7 +1183,7 @@ imtApp
         };
     
     })
-    .controller("DeleteBrandModalCtrl", function($scope, $http, $rootScope, $sce, $modal, $modalInstance, $location, $route, MenuService, dataService, Utils) { 
+    .controller("DeleteBrandModalCtrl", function($scope, $http, $rootScope, $sce, $modal, $modalInstance, $location, $route, MenuService, configService, dataService, Utils) { 
     
         $rootScope.withError = false;
 
@@ -1194,7 +1191,7 @@ imtApp
             
             $http({
                   method: 'DELETE',
-                  url: url_base_api + 'brands/' + $rootScope.brandToDelete._id,
+                  url: configService.url_base_api + 'brands/' + $rootScope.brandToDelete._id,
                   headers: {
                      "Accept": "application/json;charset=utf-8",
                      "Authorization" : "Bearer " + $rootScope.token
@@ -1222,7 +1219,7 @@ imtApp
           $modalInstance.dismiss('cancel');
         };
     })
-    .controller("DeleteItemModalCtrl", function($scope, $http, $rootScope, $sce, $modal, $modalInstance, $location, $route, MenuService, dataService, Utils) { 
+    .controller("DeleteItemModalCtrl", function($scope, $http, $rootScope, $sce, $modal, $modalInstance, $location, $route, MenuService, configService, dataService, Utils) { 
     
         $rootScope.withError = false;
 
@@ -1230,7 +1227,7 @@ imtApp
             
             $http({
                   method: 'DELETE',
-                  url: url_base_api + 'items/' + $rootScope.itemToDelete._id,
+                  url: configService.url_base_api + 'items/' + $rootScope.itemToDelete._id,
                   headers: {
                      "Accept": "application/json;charset=utf-8",
                      "Authorization" : "Bearer " + $rootScope.token
@@ -1258,7 +1255,7 @@ imtApp
           $modalInstance.dismiss('cancel');
         };
     })
-    .controller("DeleteUserModalCtrl", function($scope, $http, $rootScope, $sce, $modal, $modalInstance, $location, $route, MenuService, dataService, Utils) { 
+    .controller("DeleteUserModalCtrl", function($scope, $http, $rootScope, $sce, $modal, $modalInstance, $location, $route, MenuService, configService, dataService, Utils) { 
     
         $rootScope.withError = false;
 
@@ -1266,7 +1263,7 @@ imtApp
             
             $http({
                   method: 'DELETE',
-                  url: url_base_api + 'users/' + $rootScope.userToDelete._id,
+                  url: configService.url_base_api + 'users/' + $rootScope.userToDelete._id,
                   headers: {
                      "Accept": "application/json;charset=utf-8",
                      "Authorization" : "Bearer " + $rootScope.token
@@ -1294,7 +1291,7 @@ imtApp
           $modalInstance.dismiss('cancel');
         };
     })
-    .controller("ChangePasswordModalCtrl", function($scope, $http, $rootScope, $sce, $modal, $modalInstance, $location, $route, MenuService, dataService, Utils) { 
+    .controller("ChangePasswordModalCtrl", function($scope, $http, $rootScope, $sce, $modal, $modalInstance, $location, $route, MenuService, configService, dataService, Utils) { 
     
         $rootScope.withError = false;
         $rootScope.registering = false;
@@ -1315,7 +1312,7 @@ imtApp
                 
                     $http({
                         method: 'PUT',
-                        url: url_base_api + 'users/changepass/' + $rootScope.userToEdit.username,
+                        url: configService.url_base_api + 'users/changepass/' + $rootScope.userToEdit.username,
                         headers: {
                            "Accept": "application/json;charset=utf-8",
                             "Authorization" : "Bearer " + $rootScope.token
