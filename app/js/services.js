@@ -72,7 +72,7 @@ imtApp
             
                 return $http({
                   method: 'GET',
-                  url: configService.url_api + object_url,
+                  url: configService.url_base_api + object_url,
                   headers: {
                         "Accept": "application/json;charset=utf-8",
                         "Authorization": "bearer " + $rootScope.token
