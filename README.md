@@ -16,6 +16,16 @@ version 0.0.2.
 
 ## Deployment and Testing
 
+For the app to work, API URL must be set in file app/js/services.js:
+
+```javascript
+.service('configService',function() {
+        var config = {};
+        config.url_base_api = 'your_api_url_here';        
+        return config;
+})
+```
+
 For deployment, just serve app/ folder on any web server.
 
 A node web server is provided for testing purposes. To run it just run `node server` on any Node.js environment.
